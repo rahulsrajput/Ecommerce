@@ -1,0 +1,36 @@
+{% extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+            <h4 class="mb-5"><strong>Trending Products</strong></h4>
+
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card product">
+                        <img class="" src="{{product.imageURL}}" class="img-fluid" />
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body product">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <hr>
+                            <h4><strong>${{product.price|floatformat:2}}</strong></h4>
+                            <button data-product="{{product.id}}" data-action="add"
+                                class="btn btn-primary add-btn update-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </section>
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}

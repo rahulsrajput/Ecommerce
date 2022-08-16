@@ -1,0 +1,78 @@
+{% extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+<section class="h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="p-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                    </div>
+                                    <hr class="my-4">
+
+                                    {% for item in items %}
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <div style="flex: 2"><img src="{{item.product.imageURL}}" class="row-image">
+                                        </div>
+                                        <div style="flex: 2"><strong>{{item.product.name}}</strong></div>
+                                        <div style="flex: 1"><strong>${{item.product.price|floatformat:2}}</strong>
+                                        </div>
+                                        <div style="flex: 1">
+                                            <p class="quantity">{{item.quantity}}</p>
+                                            <div class="quantity">
+                                                <img data-product={{item.product.id}} data-action="add"
+                                                    src="{% static 'images/arrow-up.png'%}"
+                                                    class="chg-quantity update-cart">
+
+                                                <img data-product={{item.product.id}} data-action="remove"
+                                                    src="{% static 'images/arrow-down.png'%}"
+                                                    class="chg-quantity update-cart">
+                                            </div>
+                                        </div>
+                                        <div style="flex: 1"><strong>${{item.get_total}}</strong></div>
+                                    </div>
+                                    {% endfor %}
+
+                                    <hr class="my-4">
+
+                                    <div class="pt-5">
+                                        <h6 class="mb-0"><a href="{% url 'store'%}" class="text-body"><i
+                                                    class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-4">
+                                        <h5>Items: <strong>{{order.get_cart_items}}</strong> </h5>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5>Total: <strong>${{order.get_cart_total|floatformat:2}}</strong> </h5>
+                                    </div>
+
+                                    <a style="margin: 5px;" class="btn btn-dark btn-block btn-lg"
+                                        data-mdb-ripple-color="dark" href="{% url 'checkout'%}">Checkout</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
