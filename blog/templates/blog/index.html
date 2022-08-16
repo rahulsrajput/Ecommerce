@@ -1,0 +1,31 @@
+{% extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h4 class="mb-4 mt-2"><strong>Latest Posts</strong></h4>
+    <hr>
+
+    <div class="row mb-2">
+
+        <div class="col-md-8">
+            {% for item in mypost %}
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="{{item.slug}}">{{item.title}}</a>
+                    </h3>
+                    <div class="mb-1 text-muted">{{ item.author }} | {{ item.created_on}}</div>
+                    <p class="card-text mb-auto">{{ item.content|slice:":350"|safe}}</p>
+                    <a href="{{item.slug}}">Continue reading</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="{{item.imageURL}}"
+                    alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="{{item.imageURL}}"
+                    data-holder-rendered="true">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

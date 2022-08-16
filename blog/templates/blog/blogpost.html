@@ -1,0 +1,19 @@
+{% extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+<div class="pt-5">
+    <h6 class="mb-0"><a href="{% url 'blog'%}" class="text-body"><i class="fas fa-long-arrow-alt-left m-2"></i>Back to blog</a>
+    </h6>
+</div>
+<div class="container mb-5">
+    <div class="row mt-4 mb-5">
+        <div class="col-md-8 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{post.title}}</h2>
+                <p class="blog-post-meta">{{ post.author }} | {{ post.created_on}}</p>
+                <p>{{post.content|safe}}</p>
+            </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+    </div>
+</div>
+{% endblock content %}
