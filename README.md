@@ -8,7 +8,7 @@ A fully-functional Ecommerce site named Ecommerce made using django framework wi
 ## Setup 
 #### Clone the repository 
 ```bash 
-git clone https://github.com/rahulsrajput/ecommerce 
+git clone https://github.com/rahulsrajput/ecommerce.git
 ``` 
 #### Go to desired directory 
 ```bash 
